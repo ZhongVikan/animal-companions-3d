@@ -2,8 +2,8 @@
 
 ## 下载
 
-- [完整模型包（71.7 MB）](https://github.com/ZhongVikan/animal-companions-3d/releases/download/v1.0.0/Animal_Companions_7_Characters.zip)：GLB、FBX、LOD1、贴图、Blender 源文件和预览。
-- [仅 GLB（24.5 MB）](https://github.com/ZhongVikan/animal-companions-3d/releases/download/v1.0.0/Animal_Companions_GLB.zip)：7 个角色，贴图内嵌。
+- [完整模型包（71.7 MB）](https://github.com/ZhongVikan/animal-companions-3d/raw/refs/heads/assets/animal-companions/downloads/Animal_Companions_7_Characters.zip)：GLB、FBX、LOD1、贴图、Blender 源文件和预览。
+- [仅 GLB（24.5 MB）](https://github.com/ZhongVikan/animal-companions-3d/raw/refs/heads/assets/animal-companions/downloads/Animal_Companions_GLB.zip)：7 个角色，贴图内嵌。
 
 模型文件位于独立分支 `assets/animal-companions`。当前为静态模型，不含骨骼与动画。
 
