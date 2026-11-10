@@ -1,0 +1,5 @@
+*.blend1
+__pycache__/
+*.pyc
+source/generated_assets/
+.DS_Store

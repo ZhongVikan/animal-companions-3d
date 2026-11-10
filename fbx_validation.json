@@ -1,0 +1,79 @@
+[
+  {
+    "file": "01_giraffe.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "02_rabbit.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "03_dragon.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "04_lion.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "05_snake.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "06_panda.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  },
+  {
+    "file": "07_shark.fbx",
+    "meshes": 1,
+    "image_names": [
+      "plush_basecolor",
+      "plush_basecolor.001",
+      "plush_normal"
+    ],
+    "missing_images": [],
+    "status": "PASS"
+  }
+]

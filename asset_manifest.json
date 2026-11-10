@@ -1,0 +1,110 @@
+{
+  "characters": [
+    {
+      "id": "01_giraffe",
+      "triangles": 29998,
+      "lod1_triangles": 10999,
+      "dimensions_blender_xyz_m": [
+        1.049014925956726,
+        0.6975038051605225,
+        1.8350000381469727
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 37132
+    },
+    {
+      "id": "02_rabbit",
+      "triangles": 30000,
+      "lod1_triangles": 11000,
+      "dimensions_blender_xyz_m": [
+        0.9684845209121704,
+        0.6389657258987427,
+        1.876343011856079
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 34776
+    },
+    {
+      "id": "03_dragon",
+      "triangles": 29999,
+      "lod1_triangles": 10999,
+      "dimensions_blender_xyz_m": [
+        0.9684845209121704,
+        0.7754895687103271,
+        1.7684314250946045
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 37852
+    },
+    {
+      "id": "04_lion",
+      "triangles": 30000,
+      "lod1_triangles": 10999,
+      "dimensions_blender_xyz_m": [
+        1.0437381267547607,
+        0.7255182862281799,
+        1.607840657234192
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 47386
+    },
+    {
+      "id": "05_snake",
+      "triangles": 29544,
+      "lod1_triangles": 11000,
+      "dimensions_blender_xyz_m": [
+        0.9684845209121704,
+        0.7090246677398682,
+        1.3624188899993896
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 29544
+    },
+    {
+      "id": "06_panda",
+      "triangles": 30000,
+      "lod1_triangles": 11000,
+      "dimensions_blender_xyz_m": [
+        0.9684845209121704,
+        0.623002290725708,
+        1.5500540733337402
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 33844
+    },
+    {
+      "id": "07_shark",
+      "triangles": 30000,
+      "lod1_triangles": 11000,
+      "dimensions_blender_xyz_m": [
+        0.9684845209121704,
+        0.894433856010437,
+        1.7539689540863037
+      ],
+      "materials": 1,
+      "rigged": false,
+      "animations": 0,
+      "source_triangles": 30672
+    }
+  ],
+  "texture_atlas_size": 1024,
+  "model_units": "metres",
+  "gltf_up": "+Y",
+  "gltf_front": "+Z",
+  "origin": "floor midpoint between feet",
+  "rigged": false,
+  "animations": false,
+  "method": "local Blender procedural modeling from supplied reference; no cloud generation"
+}

@@ -1,0 +1,365 @@
+{
+  "checks": [
+    "GLB v2 integrity",
+    "finite geometry",
+    "index bounds",
+    "unit normals",
+    "UV presence",
+    "one mesh / one material",
+    "embedded basecolor and normal textures",
+    "no external dependencies",
+    "static asset"
+  ],
+  "results": [
+    {
+      "file": "models/glb/01_giraffe.glb",
+      "status": "PASS",
+      "triangles": 29998,
+      "vertices": 16330,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.524507462978363,
+            0.0,
+            -0.30299896001815796
+          ],
+          [
+            0.524507462978363,
+            1.8350000381469727,
+            0.3945048749446869
+          ]
+        ]
+      ],
+      "bytes": 3897072
+    },
+    {
+      "file": "models/glb/02_rabbit.glb",
+      "status": "PASS",
+      "triangles": 30000,
+      "vertices": 16044,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4842422604560852,
+            0.0,
+            -0.30900001525878906
+          ],
+          [
+            0.4842422604560852,
+            1.876343011856079,
+            0.3299656808376312
+          ]
+        ]
+      ],
+      "bytes": 3887928
+    },
+    {
+      "file": "models/glb/03_dragon.glb",
+      "status": "PASS",
+      "triangles": 29999,
+      "vertices": 16340,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4842422604560852,
+            0.0,
+            -0.36958497762680054
+          ],
+          [
+            0.4842422604560852,
+            1.7684314250946045,
+            0.4059045910835266
+          ]
+        ]
+      ],
+      "bytes": 3897400
+    },
+    {
+      "file": "models/glb/04_lion.glb",
+      "status": "PASS",
+      "triangles": 30000,
+      "vertices": 16251,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.5217380523681641,
+            0.0,
+            -0.30399999022483826
+          ],
+          [
+            0.5220000147819519,
+            1.607840657234192,
+            0.4215182960033417
+          ]
+        ]
+      ],
+      "bytes": 3894556
+    },
+    {
+      "file": "models/glb/05_snake.glb",
+      "status": "PASS",
+      "triangles": 29544,
+      "vertices": 15953,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4842422604560852,
+            0.0,
+            -0.31005483865737915
+          ],
+          [
+            0.4842422604560852,
+            1.3624188899993896,
+            0.398969829082489
+          ]
+        ]
+      ],
+      "bytes": 3882280
+    },
+    {
+      "file": "models/glb/06_panda.glb",
+      "status": "PASS",
+      "triangles": 30000,
+      "vertices": 16230,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4842422604560852,
+            0.0,
+            -0.2879999876022339
+          ],
+          [
+            0.4842422604560852,
+            1.5500540733337402,
+            0.33500227332115173
+          ]
+        ]
+      ],
+      "bytes": 3893888
+    },
+    {
+      "file": "models/glb/07_shark.glb",
+      "status": "PASS",
+      "triangles": 30000,
+      "vertices": 16128,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4842422604560852,
+            0.0,
+            -0.5
+          ],
+          [
+            0.4842422604560852,
+            1.7539689540863037,
+            0.3944338858127594
+          ]
+        ]
+      ],
+      "bytes": 3890604
+    },
+    {
+      "file": "models/lod1/01_giraffe_lod1.glb",
+      "status": "PASS",
+      "triangles": 10999,
+      "vertices": 6661,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.5241397023200989,
+            0.00011904909479198977,
+            -0.30299896001815796
+          ],
+          [
+            0.5241397023200989,
+            1.8350412845611572,
+            0.39345070719718933
+          ]
+        ]
+      ],
+      "bytes": 3473696
+    },
+    {
+      "file": "models/lod1/02_rabbit_lod1.glb",
+      "status": "PASS",
+      "triangles": 11000,
+      "vertices": 6378,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4850842356681824,
+            3.655123509815894e-05,
+            -0.309113085269928
+          ],
+          [
+            0.4850842356681824,
+            1.8771275281906128,
+            0.3299330472946167
+          ]
+        ]
+      ],
+      "bytes": 3464632
+    },
+    {
+      "file": "models/lod1/03_dragon_lod1.glb",
+      "status": "PASS",
+      "triangles": 10999,
+      "vertices": 6663,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4850842356681824,
+            0.00011904909479198977,
+            -0.36999115347862244
+          ],
+          [
+            0.4850842356681824,
+            1.7686184644699097,
+            0.4050118923187256
+          ]
+        ]
+      ],
+      "bytes": 3473756
+    },
+    {
+      "file": "models/lod1/04_lion_lod1.glb",
+      "status": "PASS",
+      "triangles": 10999,
+      "vertices": 6419,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.5227839350700378,
+            0.0009668832644820213,
+            -0.30323565006256104
+          ],
+          [
+            0.5218690037727356,
+            1.608469009399414,
+            0.42025235295295715
+          ]
+        ]
+      ],
+      "bytes": 3465948
+    },
+    {
+      "file": "models/lod1/05_snake_lod1.glb",
+      "status": "PASS",
+      "triangles": 11000,
+      "vertices": 6519,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4850842356681824,
+            0.00010567110439296812,
+            -0.3108045160770416
+          ],
+          [
+            0.4850842356681824,
+            1.3624190092086792,
+            0.3991917073726654
+          ]
+        ]
+      ],
+      "bytes": 3469144
+    },
+    {
+      "file": "models/lod1/06_panda_lod1.glb",
+      "status": "PASS",
+      "triangles": 11000,
+      "vertices": 6541,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4850842356681824,
+            5.221724495640956e-05,
+            -0.2879999876022339
+          ],
+          [
+            0.4850842356681824,
+            1.550587773323059,
+            0.33496972918510437
+          ]
+        ]
+      ],
+      "bytes": 3469856
+    },
+    {
+      "file": "models/lod1/07_shark_lod1.glb",
+      "status": "PASS",
+      "triangles": 11000,
+      "vertices": 6484,
+      "mesh_count": 1,
+      "material_count": 1,
+      "embedded_images": 3,
+      "degenerate_triangles": 0,
+      "bounds_gltf_xyz_m": [
+        [
+          [
+            -0.4850842356681824,
+            0.00010567113349679857,
+            -0.5
+          ],
+          [
+            0.4850842356681824,
+            1.7539689540863037,
+            0.393283486366272
+          ]
+        ]
+      ],
+      "bytes": 3468016
+    }
+  ]
+}
