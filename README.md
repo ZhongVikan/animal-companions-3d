@@ -67,3 +67,12 @@ blender -b --python source/build_characters.py -- --skip-render
 ```
 
 脚本会在 `source/generated_assets/` 生成新文件，不覆盖本包原模型。也可从 Blender 的文本编辑器运行；脚本中包含基本的工作室布光。
+
+## Playable demo
+
+The Godot prototype is in [`demo/`](demo/). Open the repository root in Godot
+4.3+ and press Play. It uses the animal GLBs, a top-down arena, 1–4 local
+keyboard slots, CPU opponents, bouncing pies, blocking, three-round scoring,
+and a match result screen. See [`demo/README.md`](demo/README.md) for controls
+and the headless smoke test. The demo's design references and license notes are
+in [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).

@@ -3,3 +3,10 @@ __pycache__/
 *.pyc
 source/generated_assets/
 .DS_Store
+.godot/
+.godot_user/
+.godot_cache/
+*.import
+models/glb/*_plush_basecolor.png
+models/glb/*_plush_normal.png
+models/glb/*_plush_orm.png
