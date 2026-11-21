@@ -70,8 +70,10 @@ blender -b --python source/build_characters.py -- --skip-render
 
 ## Playable demo
 
+网页版可下载并在本机浏览器试玩。下载包和导出说明见 [Demo 使用说明](demo/README.md#网页版)。
+
 The Godot prototype is in [`demo/`](demo/). Open the repository root in Godot
-4.3+ and press Play. It uses the animal GLBs, a top-down arena, 1–4 local
+4.7.2 and press Play. It uses the animal GLBs, a top-down arena, 1–4 local
 keyboard slots, CPU opponents, bouncing pies, blocking, three-round scoring,
 and a match result screen. See [`demo/README.md`](demo/README.md) for controls
 and the headless smoke test. The demo's design references and license notes are

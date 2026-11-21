@@ -6,7 +6,10 @@ source/generated_assets/
 .godot/
 .godot_user/
 .godot_cache/
+/build/
 *.import
+!models/glb/*.glb.import
+!textures/plush_*.png.import
 models/glb/*_plush_basecolor.png
 models/glb/*_plush_normal.png
 models/glb/*_plush_orm.png

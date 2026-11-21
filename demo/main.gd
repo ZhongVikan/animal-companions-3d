@@ -2,6 +2,8 @@ extends Node3D
 
 const PLAYER_SCRIPT = preload("res://demo/player.gd")
 const PIE_SCRIPT = preload("res://demo/projectile.gd")
+const TOUCH_SCRIPT = preload("res://demo/touch_controls.gd")
+const UI_FONT = preload("res://demo/fonts/ArenaSansSC.otf")
 
 enum Phase { MENU, PLAYING, ROUND_RESULT, MATCH_RESULT }
 
@@ -40,12 +42,17 @@ var status_label: Label
 var instruction_label: Label
 var result_panel: ColorRect
 var result_label: Label
+var start_button: Button
+var slots_button: Button
+var touch_controls: ArenaTouchControls
+var touchscreen := false
 var world_environment: WorldEnvironment
 var throw_count := 0
 var round_count := 0
 
 func _ready() -> void:
 	rng.seed = 20261113
+	touchscreen = DisplayServer.is_touchscreen_available()
 	_setup_input()
 	_build_arena()
 	_build_hud()
@@ -123,7 +130,6 @@ func _build_arena() -> void:
 	floor_mat.metallic = 0.04
 	floor_mesh.material = floor_mat
 	floor.mesh = floor_mesh
-	floor.rotation.x = -PI / 2.0
 	arena_root.add_child(floor)
 	for x in [-8.25, 8.25]:
 		_add_box(Vector3(x, 0.75, 0), Vector3(0.35, 1.5, 11.5), Color("#5c42a2"), "Wall")
@@ -192,42 +198,82 @@ func _build_hud() -> void:
 	hud.add_child(top_bar)
 	title_label = _make_label("ANIMAL ARENA", Vector2(30, 15), 30, Color("#ffe7b1"))
 	hud.add_child(title_label)
-	status_label = _make_label("", Vector2(420, 19), 22, Color("#ffffff"))
+	status_label = _make_label("", Vector2(350, 19), 22, Color("#ffffff"))
 	status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	status_label.size.x = 500
+	status_label.size.x = 880
 	hud.add_child(status_label)
 	instruction_label = _make_label("", Vector2(28, 662), 18, Color("#d8c9ff"))
 	instruction_label.size.x = 1220
 	hud.add_child(instruction_label)
 	result_panel = ColorRect.new()
 	result_panel.color = Color(0.035, 0.02, 0.10, 0.90)
-	result_panel.position = Vector2(250, 190)
-	result_panel.size = Vector2(780, 330)
+	result_panel.position = Vector2(260, 165)
+	result_panel.size = Vector2(760, 392)
 	result_panel.visible = false
 	hud.add_child(result_panel)
-	result_label = _make_label("", Vector2(275, 220), 28, Color("#ffffff"))
-	result_label.size = Vector2(730, 270)
+	result_label = _make_label("", Vector2(285, 183), 25, Color("#ffffff"))
+	result_label.size = Vector2(710, 275)
 	result_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	result_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	result_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	result_label.visible = false
 	hud.add_child(result_label)
+	slots_button = _make_menu_button(Vector2(369, 473), Color("#543584"), Color("#ffffff"))
+	slots_button.pressed.connect(_cycle_human_count)
+	start_button = _make_menu_button(Vector2(664, 473), Color("#ffd88d"), Color("#221731"))
+	start_button.pressed.connect(start_match)
+	touch_controls = TOUCH_SCRIPT.new()
+	var touch_theme := Theme.new()
+	touch_theme.default_font = UI_FONT
+	touch_controls.theme = touch_theme
+	hud.add_child(touch_controls)
+
+func _make_menu_button(pos: Vector2, fill: Color, ink: Color) -> Button:
+	var button := Button.new()
+	button.position = pos
+	button.size = Vector2(246, 63)
+	button.focus_mode = Control.FOCUS_NONE
+	button.add_theme_font_override("font", UI_FONT)
+	button.add_theme_font_size_override("font_size", 26)
+	for state in ["font_color", "font_hover_color", "font_pressed_color"]:
+		button.add_theme_color_override(state, ink)
+	for state in ["normal", "hover", "pressed"]:
+		var style := StyleBoxFlat.new()
+		style.bg_color = fill.lightened(0.12) if state == "hover" else fill
+		style.set_corner_radius_all(12)
+		button.add_theme_stylebox_override(state, style)
+	hud.add_child(button)
+	return button
+
+func _cycle_human_count() -> void:
+	human_count = human_count % 4 + 1
+	_update_menu()
 
 func _make_label(text_value: String, pos: Vector2, font_size: int, color: Color) -> Label:
 	var label := Label.new()
 	label.text = text_value
 	label.position = pos
+	label.add_theme_font_override("font", UI_FONT)
 	label.add_theme_font_size_override("font_size", font_size)
 	label.add_theme_color_override("font_color", color)
 	return label
 
 func _update_menu() -> void:
 	phase = Phase.MENU
+	touch_controls.set_active(false)
 	result_panel.visible = true
 	result_label.visible = true
-	result_label.text = "ANIMAL ARENA\n\n1–4 选择本地玩家数量（当前 %d 人）\nENTER / SPACE 开始\n\nP1  WASD + F 投掷 + SPACE 格挡\nP2  方向键 + ENTER 投掷 + SHIFT 格挡\nP3  IJKL + O 投掷 + P 格挡\nP4  ZXCV + B 投掷 + N 格挡\n\n最后存活者赢得本回合，三回合后结算" % human_count
-	instruction_label.text = "参考玩法：Pie Noon 的投掷淘汰 + Starship Olympics 的本地多人 / AI 对手结构"
-	status_label.text = "LOCAL PARTY DEMO"
+	start_button.text = "开始对战"
+	start_button.visible = true
+	start_button.position.x = 517.0 if touchscreen else 664.0
+	slots_button.text = "本地玩家 %d / 4" % human_count
+	slots_button.visible = not touchscreen
+	if touchscreen:
+		result_label.text = "动物派对\n\n左手移动，右手投掷和格挡\n1 名玩家对战 3 名电脑\n建议横屏游玩"
+	else:
+		result_label.text = "动物派对\n\nP1  WASD + F 投掷 + SPACE 格挡\nP2  方向键 + ENTER 投掷 + SHIFT 格挡\nP3  IJKL + O 投掷 + P 格挡\nP4  ZXCV + B 投掷 + N 格挡"
+	instruction_label.text = "扔派淘汰对手，赢下最多回合"
+	status_label.text = "最后存活者赢得回合"
 
 func start_match() -> void:
 	for player in players:
@@ -244,6 +290,8 @@ func start_match() -> void:
 	_create_players()
 	result_panel.visible = false
 	result_label.visible = false
+	start_button.visible = false
+	slots_button.visible = false
 	phase = Phase.PLAYING
 	_start_round()
 
@@ -269,6 +317,7 @@ func _start_round() -> void:
 		if is_instance_valid(pie):
 			pie.queue_free()
 	projectiles.clear()
+	touch_controls.set_active(touchscreen)
 	_update_hud()
 
 func _physics_process(delta: float) -> void:
@@ -291,7 +340,10 @@ func _tick_playing(delta: float) -> void:
 			continue
 		if not player.is_human:
 			_ai_think(player, delta)
-		player.tick(delta, ARENA_BOUNDS)
+		if player.player_id == 0 and touchscreen:
+			player.tick(delta, ARENA_BOUNDS, touch_controls.movement, touch_controls.consume_throw(), touch_controls.is_block_held())
+		else:
+			player.tick(delta, ARENA_BOUNDS)
 	for pie in projectiles.duplicate():
 		if not is_instance_valid(pie):
 			projectiles.erase(pie)
@@ -378,6 +430,8 @@ func _check_pie_hits(pie: ArenaPie) -> void:
 
 func _on_player_eliminated(player: ArenaPlayer) -> void:
 	player.hit_flash = 0.8
+	if player.player_id == 0:
+		touch_controls.set_active(false)
 
 func _should_end_round() -> bool:
 	var alive_count := 0
@@ -390,6 +444,7 @@ func _end_round() -> void:
 	if phase != Phase.PLAYING:
 		return
 	phase = Phase.ROUND_RESULT
+	touch_controls.set_active(false)
 	round_count += 1
 	phase_time = ROUND_RESULT_LENGTH
 	for player in players:
@@ -427,16 +482,15 @@ func _end_match(last_round_names: Array[String]) -> void:
 		lines.append("%s    %d rounds    %d hits" % [players[i].player_name, scores[i], eliminations[i]])
 	result_panel.visible = true
 	result_label.visible = true
-	result_label.text = "MATCH COMPLETE\n\nWINNER\n%s\n\n%s\n\nPress ENTER to play again" % [" + ".join(winners), "\n".join(lines)]
+	result_label.text = "MATCH COMPLETE\n\nWINNER  %s\n\n%s" % [" + ".join(winners), "\n".join(lines)]
+	start_button.text = "再玩一局"
+	start_button.position.x = 517.0
+	start_button.visible = true
 
 func _update_hud() -> void:
 	if phase == Phase.PLAYING:
-		var alive_names: Array[String] = []
-		for player in players:
-			if player.alive:
-				alive_names.append(player.player_name)
-		status_label.text = "ROUND %d / %d     %02d s     ALIVE %d     %s" % [round_index, MATCH_ROUNDS, ceili(round_time), alive_names.size(), "  ".join(alive_names)]
-		instruction_label.text = "P1 WASD/F/SPACE     P2 ARROWS/ENTER/SHIFT     P3 IJKL/O/P     P4 ZXCV/B/N     Throw pies, block, survive"
+		status_label.text = "ROUND %d / %d     %02d s     ALIVE %d" % [round_index, MATCH_ROUNDS, ceili(round_time), _alive_count()]
+		instruction_label.text = "" if touchscreen else "P1 WASD/F/SPACE     P2 ARROWS/ENTER/SHIFT     P3 IJKL/O/P     P4 ZXCV/B/N"
 		result_panel.visible = false
 		result_label.visible = false
 

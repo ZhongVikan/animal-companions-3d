@@ -27,3 +27,11 @@ source code or assets are included here.
 The seven plush animal models in `models/glb/` are the locally generated assets
 from the supplied reference image. They are static meshes with embedded PBR
 textures. See the root `README_使用说明.md` for their limits and import notes.
+
+## Web runtime and font
+
+The Web download bundles the Godot 4.7.2 runtime under the MIT license. See
+`licenses/Godot-LICENSE.txt` and `licenses/Godot-COPYRIGHT.txt` in the download.
+
+Arena Sans SC is a renamed subset of Noto Sans CJK SC. Its SIL Open Font
+License is included in `demo/fonts/OFL.txt` and in the download.

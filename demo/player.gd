@@ -73,7 +73,6 @@ func _setup_model() -> void:
 	ring.material = halo_mat
 	halo.mesh = ring
 	halo.position.y = 0.018
-	halo.rotation.x = -PI / 2.0
 	add_child(halo)
 
 func reset_for_round(spawn: Vector3) -> void:
@@ -106,19 +105,19 @@ func set_ai_intent(move: Vector2, aim: Vector3, wants_throw: bool, wants_block: 
 func _human_move() -> Vector2:
 	return Input.get_vector(control_prefix + "_left", control_prefix + "_right", control_prefix + "_up", control_prefix + "_down")
 
-func _process_input() -> void:
+func _process_input(touch_move: Vector2, touch_throw: bool, touch_block: bool) -> void:
 	if not is_human:
 		return
-	ai_move = _human_move()
+	ai_move = (_human_move() + touch_move).limit_length()
 	if ai_move.length_squared() > 0.01:
 		ai_aim = Vector3(ai_move.x, 0.0, ai_move.y).normalized()
-	ai_wants_throw = Input.is_action_just_pressed(control_prefix + "_throw")
-	ai_wants_block = Input.is_action_pressed(control_prefix + "_block")
+	ai_wants_throw = touch_throw or Input.is_action_just_pressed(control_prefix + "_throw")
+	ai_wants_block = touch_block or Input.is_action_pressed(control_prefix + "_block")
 
-func tick(delta: float, arena_half_extents: Vector2) -> void:
+func tick(delta: float, arena_half_extents: Vector2, touch_move := Vector2.ZERO, touch_throw := false, touch_block := false) -> void:
 	if not alive:
 		return
-	_process_input()
+	_process_input(touch_move, touch_throw, touch_block)
 	throw_cooldown = maxf(0.0, throw_cooldown - delta)
 	block_cooldown = maxf(0.0, block_cooldown - delta)
 	hit_flash = maxf(0.0, hit_flash - delta)
